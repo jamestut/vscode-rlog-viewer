@@ -1,0 +1,52 @@
+{
+  "scopeName": "source.rlog",
+  "patterns": [
+    {
+      "begin": "^(=== [A-Z][A-Z ]* ===)$",
+      "beginCaptures": { "1": { "name": "keyword.control.section.rlog" } },
+      "end": "^(?=\\s*$|=== )",
+      "patterns": [
+        {
+          "match": "^(event|data|id|retry)(:)",
+          "captures": {
+            "1": { "name": "entity.name.tag.sse-field.rlog" },
+            "2": { "name": "punctuation.separator.key-value.rlog" }
+          }
+        },
+        {
+          "match": "^([A-Z]+)(\\s+)(\\S+)(?:\\s+(HTTP/\\d+(?:\\.\\d+)?))?$",
+          "captures": {
+            "1": { "name": "keyword.other.http-method.rlog" },
+            "3": { "name": "string.unquoted.url.rlog" },
+            "4": { "name": "constant.language.http-version.rlog" }
+          }
+        },
+        {
+          "match": "^(HTTP/\\d+(?:\\.\\d+)?)(\\s+)(\\d{3})(?:\\s+.*)?$",
+          "captures": {
+            "1": { "name": "constant.language.http-version.rlog" },
+            "3": { "name": "constant.numeric.http-status.rlog" }
+          }
+        },
+        {
+          "match": "^([A-Za-z0-9!#$%&'*+.^_`|~-]+)(:)",
+          "captures": {
+            "1": { "name": "entity.name.tag.http-header.rlog" },
+            "2": { "name": "punctuation.separator.key-value.rlog" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "keyword.control.section.rlog",
+      "match": "^=== [A-Z][A-Z ]* ===$"
+    },
+    {
+      "match": "^(event|data|id|retry)(:)",
+      "captures": {
+        "1": { "name": "entity.name.tag.sse-field.rlog" },
+        "2": { "name": "punctuation.separator.key-value.rlog" }
+      }
+    }
+  ]
+}

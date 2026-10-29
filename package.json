@@ -1,0 +1,34 @@
+{
+  "name": "rlog-viewer",
+  "displayName": "Rlog Viewer",
+  "description": "Open JSON from request logs in a formatted read-only editor.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "files": [
+    "extension.js",
+    "syntaxes/**",
+    "README.md"
+  ],
+  "categories": ["Other"],
+  "activationEvents": ["onLanguage:rlog"],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "rlog",
+        "aliases": ["Rlog"],
+        "extensions": [".rlog"]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rlog",
+        "scopeName": "source.rlog",
+        "path": "./syntaxes/rlog.tmLanguage.json"
+      }
+    ]
+  }
+}
